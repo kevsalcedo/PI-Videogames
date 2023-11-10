@@ -9,16 +9,14 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom"
 
 /* components to render */
-import Home from './views/home/Home';
-import Form from './views/form/Form';
-import Details from './views/details/Details';
-import Landing from './views/landing/Landing';
-import Error from './views/error/Error';
-
+import {Home, Form, Details, Landing, Error } from "./views/index"
+import Navbar from './components/navbar/Navbar';
 
 function App() {
+  const location = useLocation();
   return (
-    <div>
+    <div className='App'>
+        {location.pathname !== "/" && <Navbar/>}
       <Routes>
         <Route path='/home' element={<Home/>} />
         <Route path='/form' element={<Form/>}/>

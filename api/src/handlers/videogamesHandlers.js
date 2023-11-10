@@ -8,27 +8,9 @@ const {
 const getVideogamesHandler = async (req, res) => {
   const { name } = req.query;
 
-  const result = name ? getVideogameByName(name) : getAllVideogames();
+  const result = name ? await getVideogameByName(name) : await getAllVideogames();
 
-  try {
-
-    if (!name) {
-      const allVideogames = await Videogame.findAll();
-
-      res.status(200).json(allVideogames);
-    } else {
-      const videogameByName = await Videogame.findAll({
-        where: {
-          name,
-        },
-        limit: 15,
-      });
-
-      res.status(200).json(videogameByName);
-    }
-  } catch (error) {
-    res.status(404).send(error.message);
-  }
+  res.status(200).json(result);
 };
 
 const getVideogameHandler = async (req, res) => {
@@ -46,13 +28,13 @@ const getVideogameHandler = async (req, res) => {
 
 const createVideogameHandler = async (req, res) => {
   try {
-    const { name, description, plataforms, image, released, rating, genres } =
+    const { name, description, platforms, image, released, rating, genres } =
       req.body;
 
     const newVideogame = await createVideogame(
       name,
       description,
-      plataforms,
+      platforms,
       image,
       released,
       rating,

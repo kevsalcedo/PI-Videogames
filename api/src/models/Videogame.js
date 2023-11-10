@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    plataforms: {
+    platforms: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -33,6 +33,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    created: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    }
   },
   {
     timestamps: false

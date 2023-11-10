@@ -1,0 +1,11 @@
+.card{
+    border: 1px solid whitesmoke;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.image{
+    height: fit-content;
+    width: 500px;
+}
